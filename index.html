@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@300;400;500;700;900&family=Rubik&display=swap" rel="stylesheet">
+    <!-- STYLES -->
+    <link rel="stylesheet" href="./style.css"/>
+    <title>LEAD</title>
+</head>
+<body class="wrapper">
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <a href="/"><img src="./assets/img/svg/logo.svg" class="logo__image" alt="logo"/></a>
+        </div>
+    </header>
+
+
+    <section class="timer-section">
+        <div class="container">
+            <h1 class="section-title">Under Construction</h1>
+            <p class="section-paragraph">
+                We're making lots of improvements and will be back soon
+            </p>
+            <div class="timer">
+                <div class="timer__number timer__number--days">
+                    <span>00</span>
+                    <div class="timer__number--type ">
+                        Days
+                    </div>
+                </div>:
+                <div class="timer__number timer__number--hours">
+                    <span>00</span>
+                    <div class="timer__number--type ">
+                        Hours
+                    </div>
+                </div>:
+                <div class="timer__number timer__number--minutes">
+                    <span>00</span>
+                    <div class="timer__number--type ">
+                        Minutes
+                    </div>
+                </div>:
+                <div class="timer__number timer__number--seconds">
+                    <span>00</span>
+                    <div class="timer__number--type">
+                        Seconds
+                    </div>
+                </div>
+            </div>
+            <div class="event-wrap">
+                <p class="section-paragraph">
+                    Check our event page when you wait:
+                </p>
+                <a href="https://egorovagency.by/#main" class="link-btn" target="_blank">
+                    Go to the event
+                </a>
+            </div>
+        </div> 
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="email">
+            <form id="form-email" class="email__form" submit="submit();">
+                <input type="text" class="email__input" placeholder="Enter your Email and get notified"/>
+                <button type="submit" class="email__btn">
+                </button>
+            </form>
+        </div>
+    </footer>
+
+    <div class="modal" id="subscribe-modal">
+        <div class="modal__block">
+            <h3 class="modal__title">SUCCESS!</h3>
+            <p class="modal__paragraph">You have successfully subscribed to the email newsletter</p>
+            <button type="button" class="modal__btn" onclick="closeModal();">Close</button>
+            <button type="button" class="modal__btn-icon" onclick="closeModal();"></button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
