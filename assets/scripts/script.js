@@ -135,14 +135,13 @@ function setTime ({days , hours, minutes, seconds}) {
 
 function setNumberName() {
     if (window.innerWidth <= 1024 && !shortNameTime) {
-        
         dayCaption.textContent = 'DD';
         hoursCaption.textContent = 'HH';
         minutesCaption.textContent = 'MM';
         secondsCaption.textContent = 'SS';
     }
 
-    if (window.innerWidth > 1024 && shortNameTime) {
+    if (window.innerWidth > 1024 && !shortNameTime) {
 
         dayCaption.textContent = 'Days';
         hoursCaption.textContent = 'Hours';
