@@ -1,7 +1,8 @@
 //const form
 const form = document.getElementById('form-email');
 const inputEmail = document.querySelector('.email__input')
-const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    
 
 // const modal
 const modal = document.getElementById('subscribe-modal');
@@ -20,6 +21,7 @@ let minutesCaption = document.querySelector('.timer__number--minutes .timer__num
 let secondsCaption = document.querySelector('.timer__number--seconds .timer__number--type');
 let shortNameTime = false
 
+const fromDate = new Date(2022, 10, 30, 10, 8, 6);
 const toDate = new Date('2022-12-31');
 
 timer();
@@ -35,7 +37,7 @@ inputEmail.addEventListener('input', deleteInputClassError)
 form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    if (!validateEmail(inputEmail.value.trim())) {
+    if (!inputEmail.value.trim().match(pattern)) {
         inputEmail.classList.add('email__input--error')
         return;
     }
@@ -97,20 +99,27 @@ const generateTextModal = (result) => {
 }
 
 function timer() {
+    //If we count from the current date, else - false
+    let currentDate = true;
+
     setInterval(() => {
-        let timeData = getTime();
+        let timeData = getTime(currentDate);
         setTime(timeData);
     }, 1000); 
+   
 }
 
 // get the difference between the dates
-const getTime = () => {
-    let nowDate = new Date(); // now date
+const getTime = ( current = true) => {
 
-    const days = parseInt((toDate - nowDate) / (1000 * 60 * 60 * 24));
-    const hours = parseInt(Math.abs(toDate - nowDate) / (1000 * 60 * 60) % 24);
-    const minutes = parseInt(Math.abs(toDate.getTime() - nowDate.getTime()) / (1000 * 60) % 60);
-    const seconds = parseInt(Math.abs(toDate.getTime() - nowDate.getTime()) / (1000) % 60); 
+    let selectedDate = current ? new Date() : fromDate;
+
+    const days = parseInt((toDate - selectedDate) / (1000 * 60 * 60 * 24));
+    const hours = parseInt(Math.abs(toDate - selectedDate) / (1000 * 60 * 60) % 24);
+    const minutes = parseInt(Math.abs(toDate.getTime() - selectedDate.getTime()) / (1000 * 60) % 60);
+    const seconds = parseInt(Math.abs(toDate.getTime() - selectedDate.getTime()) / (1000) % 60); 
+
+    if (!current) fromDate.setSeconds(fromDate.getSeconds() + 1);
 
     return {days , hours, minutes, seconds};
 }
