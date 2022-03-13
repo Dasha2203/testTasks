@@ -27,7 +27,7 @@ const toDate = new Date('2022-12-31');
 timer();
 
 //rename caption time 
-window.onload = setNumberName;
+window.onload = () => setNumberName();
 window.addEventListener('resize', setNumberName);
 
 //remove class error
