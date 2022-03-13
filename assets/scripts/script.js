@@ -26,7 +26,7 @@ const toDate = new Date('2022-12-31');
 
 timer();
 
-//rename caption time
+//rename caption time 
 window.onload = setNumberName;
 window.addEventListener('resize', setNumberName);
 
