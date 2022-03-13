@@ -27,7 +27,7 @@ const toDate = new Date('2022-12-31');
 timer();
 
 //rename caption time
-window.onload = setNumberName();
+window.onload = setNumberName;
 window.addEventListener('resize', setNumberName);
 
 //remove class error
@@ -134,6 +134,7 @@ function setTime ({days , hours, minutes, seconds}) {
 }
 
 function setNumberName() {
+    console.log('executed')
     if (window.innerWidth <= 1024 && !shortNameTime) {
         
         dayCaption.textContent = 'DD';
