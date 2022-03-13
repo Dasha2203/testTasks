@@ -59,7 +59,7 @@ body {
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
-    background: url('./assets/img/svg/arrow.svg') no-repeat 50% 50%;
+    background: url('../svg/arrow.svg') no-repeat 50% 50%;
 
 }
 
@@ -81,7 +81,7 @@ body {
 }
 
 .header::before {
-    background: url('./assets/img/svg/left-img.svg') no-repeat;
+    background: url('../svg/left-img.svg') no-repeat;
     background-size: contain;
     left: 0;
     width: 28%;
@@ -90,7 +90,7 @@ body {
 }
 
 .header::after {
-    background: url('./assets/img/svg/right-img.svg') no-repeat;
+    background: url('../svg/right-img.svg') no-repeat;
     background-size: contain;
     right: 0;
     width:  14%;
@@ -151,7 +151,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('./assets/img/svg/time-bg.svg') no-repeat 50% 50%;
+    background: url('../svg/time-bg.svg') no-repeat 50% 50%;
 }
 
 
@@ -229,7 +229,7 @@ body {
     transform: translate(-50%, -50%);
     width: 20px;
     height: 20px;
-    background: url('./assets/img/svg/arrow.svg') no-repeat 50% 50%;
+    background: url('../svg/arrow.svg') no-repeat 50% 50%;
     cursor: pointer;
 }
 
@@ -266,7 +266,7 @@ body {
     position: absolute;
     top: 24px;
     right: 16px;
-    background: url('./assets/img/svg/close.svg') no-repeat 50% 50%;
+    background: url('../svg/close.svg') no-repeat 50% 50%;
     border: none;
     width: 24px;
     height: 24px;
@@ -347,7 +347,7 @@ body {
     .timer__number--type {
         width:  64px;
         height: 40px;
-        background: url('./assets/img/svg/time-bg-mobile.svg') no-repeat 50% 50%;
+        background: url('../svg/time-bg-mobile.svg') no-repeat 50% 50%;
         background-size: 100% 100%;
         font-size: 12px;
         top: calc(100% + 6px);
