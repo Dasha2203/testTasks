@@ -24,52 +24,24 @@ const toDate = new Date('2022-12-31');
 
 timer();
 
-window.addEventListener('onload', (e) => {
-    if (e.currentTarget.innerWidth <= 1024 && !shortNameTime) {
-        
-        dayCaption.textContent = 'DD';
-        hoursCaption.textContent = 'HH';
-        minutesCaption.textContent = 'MM';
-        secondsCaption.textContent = 'SS';
-    }
-    if (e.currentTarget.innerWidth > 1024 && shortNameTime) {
-        dayCaption.textContent = 'Days';
-        hoursCaption.textContent = 'Hours';
-        minutesCaption.textContent = 'Minutes';
-        secondsCaption.textContent = 'Seconds';
-    }
-    shortNameTime = !shortNameTime;
-})
+//rename caption time
+window.onload = setNumberName();
+window.addEventListener('resize', setNumberName);
 
-window.addEventListener('resize', (e) => {
-    if (e.currentTarget.innerWidth <= 1024 && !shortNameTime) {
-        
-        dayCaption.textContent = 'DD';
-        hoursCaption.textContent = 'HH';
-        minutesCaption.textContent = 'MM';
-        secondsCaption.textContent = 'SS';
-    }
-    if (e.currentTarget.innerWidth > 1024 && shortNameTime) {
-        dayCaption.textContent = 'Days';
-        hoursCaption.textContent = 'Hours';
-        minutesCaption.textContent = 'Minutes';
-        secondsCaption.textContent = 'Seconds';
-    }
-    shortNameTime = !shortNameTime;
-});
+//remove class error
+inputEmail.addEventListener('input', deleteInputClassError)
 
 //submit form
 form.addEventListener("submit", function(e) {
     e.preventDefault();
-    if (!validateEmail(inputEmail.value)) {
+
+    if (!validateEmail(inputEmail.value.trim())) {
         inputEmail.classList.add('email__input--error')
         return;
     }
 
     sendData();
 });
-
-inputEmail.addEventListener('input', deleteInputClassError)
 
 // I didn't understand where to send it, so I used jsonplaceholder
 const sendData = async () => {
@@ -90,7 +62,6 @@ const sendData = async () => {
         let post = await response.json();
 
         generateTextModal(true)
-        
         modal.classList.add('modal--show');
         
         console.log(post);
@@ -110,6 +81,7 @@ function deleteInputClassError() {
     inputEmail.classList.remove('email__input--error')
 }
 
+//hide modal
 const closeModal = () => {
     modal.classList.remove('modal--show');
 }
@@ -124,27 +96,57 @@ const generateTextModal = (result) => {
     }
 }
 
-function timer () {
-    setInterval(getTime, 1000); 
+function timer() {
+    setInterval(() => {
+        let timeData = getTime();
+        setTime(timeData);
+    }, 1000); 
 }
 
-function getTime () {
-    let nowDate = new Date();
+// get the difference between the dates
+const getTime = () => {
+    let nowDate = new Date(); // now date
+
     const days = parseInt((toDate - nowDate) / (1000 * 60 * 60 * 24));
     const hours = parseInt(Math.abs(toDate - nowDate) / (1000 * 60 * 60) % 24);
     const minutes = parseInt(Math.abs(toDate.getTime() - nowDate.getTime()) / (1000 * 60) % 60);
     const seconds = parseInt(Math.abs(toDate.getTime() - nowDate.getTime()) / (1000) % 60); 
+
+    return {days , hours, minutes, seconds};
+}
+
+function setTime ({days , hours, minutes, seconds}) {
+    if (!arguments.length) return;
+
     dayBlock.textContent = `${days}`;
     hoursBlock.textContent = checkNumber(hours);
     minutesBlock.textContent = checkNumber(minutes);
     secondsBlock.textContent = checkNumber(seconds);
 }
 
-const checkNumber = (number) => {
-    if (number < 10) return `0${number}`
-    return `${number}`
+function setNumberName() {
+    if (window.innerWidth <= 1024 && !shortNameTime) {
+        
+        dayCaption.textContent = 'DD';
+        hoursCaption.textContent = 'HH';
+        minutesCaption.textContent = 'MM';
+        secondsCaption.textContent = 'SS';
+    }
+
+    if (window.innerWidth > 1024 && shortNameTime) {
+
+        dayCaption.textContent = 'Days';
+        hoursCaption.textContent = 'Hours';
+        minutesCaption.textContent = 'Minutes';
+        secondsCaption.textContent = 'Seconds';
+
+    }
+
+    shortNameTime = !shortNameTime;
+    
 }
 
-const resizeWindow = () => {
-
+function checkNumber(number) {
+    if (number < 10) return `0${number}`
+    return `${number}`
 }
